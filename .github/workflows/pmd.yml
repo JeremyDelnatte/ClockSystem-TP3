@@ -35,7 +35,7 @@ jobs:
         with:
           rulesets: 'rulesets/java/quickstart.xml'
 
-      - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v3
+      - name: Upload a test report of the build
+        uses: actions/upload-artifact@v4
         with:
-          sarif_file: pmd-report.sarif
+          path: app/build/reports/pmd/main.html
