@@ -18,6 +18,7 @@ jobs:
   pmd-code-scan:
     permissions:
       contents: read
+      security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -34,7 +35,7 @@ jobs:
         with:
           rulesets: 'rulesets/java/quickstart.xml'
 
-      - name: Upload a report of the code analysis
-        uses: actions/upload-artifact@v4.6.1
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v3
         with:
-          path: app/build/reports/pmd
+          sarif_file: pmd-report.sarif
