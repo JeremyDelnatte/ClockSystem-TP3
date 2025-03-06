@@ -30,4 +30,4 @@ jobs:
         id: pmd
         uses: pmd/pmd-github-action@v2
         with:
-          rulesets: ’java-basic’
+          rulesets: 'java-basic'
