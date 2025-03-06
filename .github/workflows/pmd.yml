@@ -35,7 +35,6 @@ jobs:
         with:
           rulesets: 'rulesets/java/quickstart.xml'
 
-      - name: Upload a test report of the build
-        uses: actions/upload-artifact@v4
-        with:
-          path: app/build/reports/pmd/main.html
+      - name: Fail build if there are violations
+        if: steps.pmd.outputs.violations != 0
+        run: exit 1
